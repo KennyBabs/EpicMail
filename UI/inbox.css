@@ -1,0 +1,187 @@
+* {
+  box-sizing : border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d1d8e0;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #2C3A47;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.15rem;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.logo {
+  text-shadow: 2px 2px 4px #000000;
+  color: white;
+  font-weight: 500;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.deco {
+ color: #eb3b5a;
+
+}
+
+.inbox {
+  border-left: 5px solid #e74c3c;
+  margin-bottom: 5px;
+}
+
+.inbox:hover {
+  background-color: #747d8c;
+  opacity: 0.9;
+}
+.sent {
+  border-left: 5px solid #3498db;
+  margin-bottom: 5px;
+}
+
+.sent:hover {
+  background-color:#747d8c;;
+  opacity: 0.9;
+}
+
+.drafts {
+  border-left: 5px solid rgb(247, 195, 51);
+  margin-bottom: 5px;
+
+}
+.drafts:hover {
+  background-color: #747d8c;
+  opacity: 0.9;
+}
+
+.top-bar {
+  margin: 2px 30px 1px;
+}
+
+.admin-content {
+  text-align: left;
+}
+
+.admin {
+  color: #747d8c;
+  font-size: 1.3rem;
+  margin-left: 10px;
+}
+
+.img-avatar {
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.compose {
+  border-radius: 30px;
+  border: 2px solid #eb3b5a;  
+}
+
+.compose:hover {
+  border: 3px solid #eb3b5a;
+
+}
+
+.openbtn {
+  outline: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  background-color: #f1f2f6;
+  color: #34495e;
+  padding: 10px 15px;
+  border-radius: 13px;
+  width: 90vw;
+  text-align: left;
+
+}
+
+.openbtn:hover {
+  /*background-color: #444;*/
+  outline: none;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+.dropbtn {
+  background-color: #ecf0f1;
+  color: black;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  width: 95vw;
+  margin: auto;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #dfe6e9;
+  border-left: 5px solid #596275;
+}
+
+
+.dropdown-content {
+  display: none;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  width: 95vw;
+  margin: auto;
+}
+
+.dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown p:hover {background-color: #ddd;}
+
+.show {display: block;}
