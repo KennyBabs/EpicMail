@@ -1,0 +1,153 @@
+* {
+  box-sizing : border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d1d8e0;
+}
+
+.arrow a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.openbtn {
+  outline: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  background-color: #f1f2f6;
+  color: #34495e;
+  padding: 10px 15px;
+  border-radius: 13px;
+  width: 90vw;
+  text-align: left;
+
+}
+
+.openbtn:hover {
+  /*background-color: #444;*/
+  outline: none;
+}
+.arrow a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dropbtn {
+  background-color: #ecf0f1;
+  color: black;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  width: 95vw;
+  margin: auto;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #dfe6e9;
+  border-left: 5px solid #596275;
+}
+
+
+.modal {
+  display: none; 
+  left: 0;
+  top: 0;
+  width: 80%; /* Full width */
+  height: 100%;  /*Full height */
+  margin: auto;
+  overflow: auto; /* Enable scroll if needed */
+  /*-webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+
+/* Modal Content */
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  background-color: #fefefe;
+  width: 70%;
+  height: 60%;
+
+  /*Add animation*/
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 1px 2px;
+  background-color: #2C3A47;
+  color: white;
+}
+
+.form {
+  padding: 3px;
+}
+
+.modal-body {padding: 10px 5px;}
+
+.modal-body input[type='email'], input[type='text'] {
+  width: 80%;
+  outline: none;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  clear: both;
+}
+ .modal-body textarea {
+  border: 1px solid grey;
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+ }
+
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
