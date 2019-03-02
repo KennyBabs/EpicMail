@@ -1,5 +1,5 @@
 * {
-	box-sizing : border-box;
+  box-sizing : border-box;
 }
 
 body {
@@ -60,8 +60,8 @@ body {
 }
 
 .inbox:hover {
-	background-color: #747d8c;
-	opacity: 0.9;
+  background-color: #747d8c;
+  opacity: 0.9;
 }
 .sent {
   border-left: 5px solid #3498db;
@@ -69,8 +69,8 @@ body {
 }
 
 .sent:hover {
-	background-color:#747d8c;;
-	opacity: 0.9;
+  background-color:#747d8c;;
+  opacity: 0.9;
 }
 
 .drafts {
@@ -79,27 +79,27 @@ body {
 
 }
 .drafts:hover {
-	background-color: #747d8c;
-	opacity: 0.9;
+  background-color: #747d8c;
+  opacity: 0.9;
 }
 
 .top-bar {
-	margin: 2px 30px 1px;
+  margin: 2px 30px 1px;
 }
 
 .admin-content {
-	text-align: left;
+  text-align: left;
 }
 
 .admin {
-	color: #747d8c;
-	font-size: 1.3rem;
-	margin-left: 10px;
+  color: #747d8c;
+  font-size: 1.3rem;
+  margin-left: 10px;
 }
 
 .img-avatar {
-	text-align: center;
-	margin-bottom: 0.4rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
 }
 
 .avatar {
@@ -110,12 +110,12 @@ body {
 }
 
 .compose {
-	border-radius: 30px;
-	border: 2px solid #eb3b5a;	
+  border-radius: 30px;
+  border: 2px solid #eb3b5a;  
 }
 
 .compose:hover {
-	border: 3px solid #eb3b5a;
+  border: 3px solid #eb3b5a;
 
 }
 
