@@ -1,0 +1,99 @@
+* {box-sizing : border-box;}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  /*background-color: #d1d8e0;*/
+  width: 100%;
+  background-color: #ecf0f1;
+}
+
+.header {
+	border: 1px solid #2C3A47;
+	border-radius: 5px;
+	width:40%;
+	margin-left: 30px;
+
+}
+
+.compose-head {
+	margin-left: 0.4rem;
+	/*width: 100%;*/
+	/*text-shadow: 2px 2px 2px #000000;*/
+    color: #2C3A47;
+    font-weight: bold;
+    /*font-size: 30px;*/
+}
+
+.container {
+	border: 1px solid black;
+	/*background-color: grey;*/
+	width:95%;
+	margin: .5rem auto 0;
+	height: 100%;
+
+
+}
+
+.new-msg {
+	background-color: #2C3A47;
+	margin: 0;
+	padding: 6px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.form textarea {
+	width: 100%;
+	outline: none;
+	border-radius: 10px;
+	/*margin-left: 2px; ;*/
+
+}
+
+.form select {
+	width:40%;
+	padding: 3px;
+	outline: none;
+	border-radius: 5px;
+	margin-bottom: 2px;
+	margin-left:2px;
+	/*margin-right: 3px;*/
+}
+.form select:focus{
+	outline: none;
+}
+
+.label {
+	padding: 2px;
+	/*margin: 10px;*/
+	margin-left: 3px;
+	/*border: 2px solid red;*/
+}
+
+input[type=text], input[type=email] {
+  width: 90%;
+  padding-left: 3px;
+  margin-left: 5px ;
+  margin-bottom: 4px;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid black;
+  background-color: #ecf0f1;
+}
+
+button {
+	border-radius: 7px;
+	padding: 6px;
+	margin-top: 4px;
+	margin-bottom: 5px;
+	margin-left: 3px;
+	background-color: #2C3A47;
+	width: 20%;
+	color: white;
+	font-weight: bold;
+}
+
+button:focus, button:active {
+	outline: none;
+}

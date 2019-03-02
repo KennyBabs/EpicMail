@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+ <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./compose.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EpicMail-Compose</title>
+ </head>
+ <body>
+    <div class="header">
+      <h2 class="compose-head">Compose</h2>  
+    </div>
+    <div class="container">
+     <p class="new-msg">New message</p>
+     <div class="form">
+      <form>
+        <label><span class="label">To:</span></label><br><input type='email' required><br>
+        <label><span class="label">Cc/Bcc:</span></label><br><input type='email' required><br>
+        <label><span class="label">Subject</span></label><br><input type='text'><br>
+        <select>
+          <option value="select group">Select Group</option>
+          <option value="group1">GroupOne</option>
+          <option value="group2">GroupTwo</option>
+          <option value="group3">GroupThree</option>
+        </select><br>
+        <textarea name='message' placeholder='compose message....' rows='20' cols="46"></textarea>
+        <button type='submit' value='Send'>Send</button>
+      </form>
+     </div>
+   </div>
+ </body>
+</html>
