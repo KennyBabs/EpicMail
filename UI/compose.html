@@ -7,25 +7,23 @@
     <title>EpicMail-Compose</title>
  </head>
  <body>
- 	  <div id="mySidebar" class="sidebar">
-      <div class="top-bar">
-        <div class="logo"><h2>Ep<span class="deco">i</span>cMail</h2></div>
-        <div class="img-avatar"><img src="./img/avata.jpg" alt="User_Avatar" class="avatar"></div>
-        <div class="compose"><a href="#">Compose</a></div>
-      </div><hr>
-      <a href="#" class="closebtn" id="close">×</a>
-      <div>
-        <div class="inbox"><a href="#">Inbox</a></div>
-        <div class="sent"><a href="#">Sent</a></div>
-        <div class="drafts"><a href="#">Drafts</a></div>
-      </div><hr>
-      <div class="admin-content">
-        <span class='admin'>Admin</span>
-        <a href="#">Create new group<span>  +</span></a>
-      </div>
-    </div>
     <div id="main">
-      <button class="openbtn composebtn" id="openbar">Compose New Message</button>  
+      <button class="openbtn composebtn" id="openbar">New Message</button>  
+    </div>
+    <div id="composeMsg">
+      <form>
+        <label>To:</label><input type='email' required><br>
+        <label>Cc/Bcc:</label><input type='email' required><br>
+        <label>Subject:</label><input type='text'><br>
+        <select>
+          <option value="select group">Select Group</option>
+          <option value="group1">GroupOne</option>
+          <option value="group2">GroupTwo</option>
+          <option value="group3">GroupThree</option>
+        </select><br>
+        <textarea name='message' placeholder='compose email' rows='20' cols="46"></textarea><br>
+        <button class='button composebtn'>Send</button>
+      </form>
     </div>
  </body>
 </html>
