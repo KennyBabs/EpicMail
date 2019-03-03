@@ -1,5 +1,5 @@
 body {
-  width: 100vw;
+  width: 100%;
 	font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
@@ -62,6 +62,15 @@ main {
   overflow: hidden;
   margin: 70px auto 0;
   height: 5vh;
+}
+
+.container-grp {
+  width: 95%;
+  height:100%;
+  /*overflow: hidden;*/
+  margin-top: 100px auto 0;
+  /*height: 5vh;*/
+  border: 2px solid red;
 }
 
 .intro-msg {
@@ -148,6 +157,15 @@ input[type=text]:focus, input[type=password]:focus {
  text-align: center;
 }
 
+.select-user {
+  border-radius: 10px;
+  width: 50%;
+  padding: 10px
+  margin-top:5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
 button {
   width: 80%;
   text-align: center;
@@ -167,6 +185,14 @@ button:hover {
 
 button:focus {
   outline: none;
+}
+
+.group-btn button {
+  width: 40%;
+  margin-bottom: 5px;
+
+
+
 }
 
 
