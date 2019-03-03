@@ -164,6 +164,7 @@ input[type=text]:focus, input[type=password]:focus {
   margin-top:5px;
   margin-bottom: 5px;
   font-weight: bold;
+  outline: none;
 }
 
 button {
