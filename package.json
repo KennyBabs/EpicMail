@@ -1,0 +1,19 @@
+{
+  "name": "epicmail",
+  "version": "1.0.0",
+  "description": "A web app that helps people exchange messages/information over the internet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KennyBabs/EpicMail.git"
+  },
+  "author": "Babalola Kehinde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KennyBabs/EpicMail/issues"
+  },
+  "homepage": "https://github.com/KennyBabs/EpicMail#readme"
+}
