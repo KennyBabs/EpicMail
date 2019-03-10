@@ -16,5 +16,18 @@ describe('EpicMail endpoints', () => {
 				done();
 			});
 		});
-    });
+		});
+
+		describe('GET /api/v1/messages', () => {
+			it('it should get unread messages', (done) => {
+				chai.request(app)
+				.get('/api/v1/messages/unread')
+				.end((err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					done();
+				});
+			});
+			});
+
 });
