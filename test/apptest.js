@@ -41,6 +41,28 @@ describe('EpicMail endpoints', () => {
 					});
 				});
 				});
+
+				describe('POST /api/v1/messages', () => {
+					it('it should post create messages', (done) => {
+						const message = {
+							id : 1,
+							createdOn : 2017,
+							subject : 'Andela',
+							message: 'This is Andela',
+							parentMessageId: 2,
+							status : sent,
+						};
+			
+						chai.request(app)
+						.post('/api/v1/messages')
+						.send(message)
+						.end((err, res) => {
+							res.should.have.status(200);
+							res.body.should.be.a('object');
+							done();
+						});
+					});
+				});
 	
 
 });
