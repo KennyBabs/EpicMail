@@ -58,9 +58,6 @@ describe('EpicMail endpoints', () => {
 						.post('/api/v1/messages')
 						.send(message)
 						.end((err, res) => {
-							if(!message.subject){
-								return err
-							}
 							res.should.have.status(200);
 							res.body.should.be.a('object');
 							done();
@@ -76,6 +73,18 @@ describe('EpicMail endpoints', () => {
 						.get(`/api/v1/messages/${id}`)
 						.end((err, res) => {
 							res.should.have.status(200);
+							res.body.should.be.a('object');
+							done();
+						});
+					});
+
+					it('it should not get a particular message', (done) =>{
+						const id = 3;
+           
+						chai.request(app)
+						.get(`/api/v1/messages/${id}`)
+						.end((err, res) => {
+							res.should.have.status(400);
 							res.body.should.be.a('object');
 							done();
 						});
