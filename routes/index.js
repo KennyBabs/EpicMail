@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
-//router.get('/api/v1/messages', messageController.getAllMessages);
+router.get('/api/v1/messages', messageController.getAllMessages);
 
 
 export default router;
