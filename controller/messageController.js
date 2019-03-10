@@ -48,6 +48,38 @@ class MessageController {
 			});
 	}
 
+	deleteMessage(req, res) {
+		const id = parseInt(req.params.id, 10);
+		let messageFound;
+		let itemIndex;
+		epicMail['Message'].filter((message, index) => {
+			if (message.id === id) {
+				messageFound = message;
+				itemIndex = index;
+			}
+		});
+
+		if (!messageFound) {
+			return res.status(400).send({
+				status: 400,
+				data: 'message not found'
+			});
+
+		}
+			epicMail['Message'].splice(itemIndex, 1);
+
+			let message = epicMail['Message'].splice(itemIndex, 1);
+			return res.status(200).send({
+				status: 200,
+				data: [{
+					"message" :message[0].message
+
+				}]	
+
+			});
+
+	}
+
 
 
 }
