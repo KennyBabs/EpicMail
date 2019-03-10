@@ -14,6 +14,8 @@ router.get('/api/v1/messages/unread', messageController.getAllMessages);
 router.get('/api/v1/messages/sent', messageController.getAllMessages);
 router.get('/api/v1/messages/:id', messageController.getMessage);
 router.post('/api/v1/messages', messageController.createMessages);
+router.delete('/api/v1/messages/:id', messageController.deleteMessage);
+
 
 
 
