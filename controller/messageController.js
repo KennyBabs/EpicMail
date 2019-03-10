@@ -39,7 +39,7 @@ class MessageController {
 			if (!message) {
 				return res.status(400).send({
 					status: 400,
-					data: 'user not found'
+					data: 'message not found'
 				});
 			}
 			return res.status(200).send({
@@ -47,6 +47,7 @@ class MessageController {
 				data: message
 			});
 	}
+
 
 
 }
