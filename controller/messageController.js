@@ -33,6 +33,22 @@ class MessageController {
 		});
 	}
 
+	getMessage (req, res) {
+		const id = parseInt(req.params.id, 10);
+		 const message = epicMail['Message'].find(message => message.id === id);
+			if (!message) {
+				return res.status(400).send({
+					status: 400,
+					data: 'user not found'
+				});
+			}
+			return res.status(200).send({
+				status: 200,
+				data: message
+			});
+	}
+
+
 }
 
 const messageController = new MessageController();
