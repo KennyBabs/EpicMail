@@ -33,6 +33,23 @@ class MessageController {
 		});
 	}
 
+	getMessage (req, res) {
+		const id = parseInt(req.params.id, 10);
+		epic['Message'].filter((message) =>{
+			if (!message.id === id) {
+				return res.status(400).send({
+					status: 400,
+					data: 'user not found'
+				});
+			}
+			return res.status(200).send({
+				status: 200,
+				data: message
+			});
+		});
+	}
+
+
 }
 
 const messageController = new MessageController();
