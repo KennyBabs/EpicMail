@@ -7,7 +7,9 @@ class MessageController {
 			data: epicMail['Message']
 		});
 
-    }
+		}
+		
+		
 }
 
 const messageController = new MessageController();

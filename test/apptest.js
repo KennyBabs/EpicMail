@@ -18,7 +18,7 @@ describe('EpicMail endpoints', () => {
 		});
 		});
 
-		describe('GET /api/v1/messages', () => {
+		describe('GET /api/v1/messages/unread', () => {
 			it('it should get unread messages', (done) => {
 				chai.request(app)
 				.get('/api/v1/messages/unread')
