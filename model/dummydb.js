@@ -8,7 +8,7 @@ const epicMail = {
             senderId : 2,
             receiverId : 3,
             parentMessageId : 4,
-            status : sent
+            status : 'sent'
         },
         {
             id : 2,
@@ -18,7 +18,7 @@ const epicMail = {
             senderId : 3,
             receiverId : 4,
             parentMessageId : 5,
-            status : read
+            status : 'read'
         }
         
     ]
