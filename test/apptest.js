@@ -68,5 +68,17 @@ describe('EpicMail endpoints', () => {
 					});
 				});
 	
+				describe('GET /api/v1/messages:id', () => {
+					it('it should get a particular message', (done) =>{
+						const id = message.id;
+						chai.request(app)
+						.get(`/api/v1/messages/${id}`)
+						.end((err, res) => {
+							res.shoud.have.status(200);
+							res.body.should.be.a('object');
+							done();
+						});
+					});
+				});
 
 });
