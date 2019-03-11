@@ -21,6 +21,16 @@ const epicMail = {
             status : 'read'
         }
         
+    ],
+
+    User : [
+        {
+            id : 1,
+            email: 'hayobabson@epicmail.com',
+            firstName: 'hayo',
+            lastName: 'babson',
+            password : 'grammar'
+        }
     ]
 
 
