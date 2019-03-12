@@ -1,9 +1,10 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import { expect } from 'chai'
 import app from '../app';
 
 chai.use(chaiHttp);
-const expect = chai.expect();
+
 
 describe('EpicMail User Endpoint', () => {
     describe('POST /api/vi/auth/signup', () => {
@@ -18,13 +19,9 @@ describe('EpicMail User Endpoint', () => {
             chai.request(app)
             .post('/api/v1/auth/signup')
             .send(new_user)
-            .then((res) => {
+            .end((err, res) => {
                 expect(res).to.have.status(200);
-                expect(res.body).to.be.equal('object');
-                expect(res.body.data).to.be.equal('array');
-                expect(res.body.data).to.be.equal('token');
-            }).catch(err => {
-               return err.message;
+                done();
             });
 
         });

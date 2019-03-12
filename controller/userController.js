@@ -19,10 +19,19 @@ class UserController {
                 message : 'Password required'
             })
         }
+        if(!req.body.firstName) {
+            return res.status(400).send({
+                message : 'Firstname required'
+            })
+        }
+        if(!req.body.lastName) {
+            return res.status(400).send({
+                message : 'Lastname required'
+            })
+        }
 
 		const hashedPassword = bcrypt.hashSync(req.body.password, 8);
-		const user = {
-			id: 
+		const user = { 
 			email: req.body.email,
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
@@ -31,15 +40,18 @@ class UserController {
 		};
 		epicMail['User'].push(user);
 		//generate token
-		const token = jwt.sign ({ id: user._id}, config.secret, { expiresIn: 86400 });
+		const token = jwt.sign ({ id: user._id}, process.env.MY_SECRET, { expiresIn: 86400 });
 		res.status(200).send({
 			status : 200,
 			data: [{
-				token: token
+				token : token
 			}]
 		});
 
 
 		}
 }
+
+const userController = new UserController();
+export default userController;
 
