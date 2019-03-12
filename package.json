@@ -4,8 +4,9 @@
   "description": "A web app that helps people exchange messages/information over the internet.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register test/*.js --exit",
-    "start": "nodemon app.js --exec babel-node --"
+    "test": "nyc mocha --require babel-register test/*.js --exit",
+    "start": "nodemon app.js --exec babel-node --",
+    "coverage" : "nyc report --report=text-Icov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -29,10 +30,12 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
     "eslint": "^5.15.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "mocha": "^6.0.2",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
   }
 }
