@@ -26,10 +26,11 @@ const epicMail = {
     User : [
         {
             id : 1,
-            email: 'hayobabson@epicmail.com',
-            firstName: 'hayo',
-            lastName: 'babson',
-            password : 'grammar'
+            email : 'hayobabson@epicmail.com',
+            firstName : 'hayo',
+            lastName : 'babson',
+            password : 'grammar',
+            userName : 'hayobabson'
         }
     ]
 

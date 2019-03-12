@@ -4,7 +4,7 @@
   "description": "A web app that helps people exchange messages/information over the internet.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register test/apptest.js --exit",
+    "test": "mocha --require babel-register test/*.js --exit",
     "start": "nodemon app.js --exec babel-node --"
   },
   "repository": {

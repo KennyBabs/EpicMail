@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../app';
 
 chai.use(chaiHttp);
-const should = chai.should();
+chai.should();
 
 describe('EpicMail endpoints', () => {
 	const message = {
