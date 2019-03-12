@@ -20,6 +20,8 @@ router.delete('/api/v1/messages/:id', messageController.deleteMessage);
 
 //==========User Endpoints==========================
 router.post('/api/v1/auth/signup', userController.createUser);
+router.post('/api/v1/auth/login', userController.loginUser);
+
 
 
 

@@ -11,22 +11,22 @@ class UserController {
         }
         if(!req.body.userName) {
             return res.status(400).send({
-                message : 'Username required'
+                'error' : 'Username required'
             })
         }
         if(!req.body.password) {
             return res.status(400).send({
-                message : 'Password required'
+                'error' : 'Password required'
             })
         }
         if(!req.body.firstName) {
             return res.status(400).send({
-                message : 'Firstname required'
+                'error' : 'Firstname required'
             })
         }
         if(!req.body.lastName) {
             return res.status(400).send({
-                message : 'Lastname required'
+                'error' : 'Lastname required'
             })
         }
 
@@ -42,14 +42,40 @@ class UserController {
 		//generate token
 		const token = jwt.sign ({ id: user._id}, process.env.MY_SECRET, { expiresIn: 86400 });
 		res.status(200).send({
-			status : 200,
-			data: [{
-				token : token
+			'status' : 200,
+			'data': [{
+				'token' : token
 			}]
 		});
 
 
-		}
+    }
+    
+    loginUser (req, res) {
+        const user = epicMail['User'].find(user => user.email === req.body.email);
+        if (!user) { 
+            return res.status(400).send({
+             'status' : 400, 
+             'error' : 'invalid email'
+            });
+        };
+
+        const passwordIsValid = epicMail['User'].find(user => user.password === req.body.password);
+        if (!passwordIsValid) { 
+            return res.status(401).send({ 
+                'status' : 401,
+                'error' : 'invalid password'
+            });
+        };
+        const token = jwt.sign({ id: user._id}, process.env.MY_SECRET, { expiresIn: 86400 });
+            res.status(200).send({ 
+                status : 200, 
+                data: [{
+                     'token' : token
+                    }] 
+                });
+        
+    }
 }
 
 const userController = new UserController();
