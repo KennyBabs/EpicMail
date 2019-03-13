@@ -27,7 +27,7 @@ header {
 header a {
   color: rgb(247, 195, 51);
   text-decoration: none;
-  font-size: 0.9rem; 
+  font-size: 1.25rem; 
   border-radius: 20px; 
   box-shadow: 1px 0.5px #485460;
   text-shadow: 1px 1px 2px black;
@@ -76,6 +76,10 @@ main {
 .intro-msg {
   text-align: center;
   padding: 1px;
+}
+
+.line {
+  width: 40%;
 }
 
 .intro-msg1 {
@@ -160,7 +164,7 @@ input[type=text]:focus, input[type=password]:focus {
 .select-user {
   border-radius: 10px;
   width: 50%;
-  padding: 10px
+  padding: 10px;
   margin-top:5px;
   margin-bottom: 5px;
   font-weight: bold;
@@ -175,8 +179,8 @@ button {
   padding: 10px;
   border: 5px solid #eb3b5a;
   border-radius: 3.5px;
-  cursor: pointer
-  font-size: 0.5rem;
+  cursor: pointer;
+  font-size: 1.35rem;
   margin-bottom: 2px;
 }
 
@@ -191,14 +195,10 @@ button:focus {
 .group-btn button {
   width: 40%;
   margin-bottom: 5px;
-
-
-
 }
 
-
 .reminder {
-  font-size: .7em;
+  font-size: .8em;
   font-weight: bold;
   margin: 10px 0;
 }
@@ -215,8 +215,8 @@ main a {
 
 main a:hover {
   color: #fff200;
-  font-size: 1.3rem;
-  font-weight: bolder;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 [class*="col-"] {

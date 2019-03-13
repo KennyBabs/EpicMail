@@ -61,24 +61,27 @@ body {
   display: none; 
   left: 0;
   top: 0;
-  width: 80%; /* Full width */
+  position: fixed;
+  width: 100%; /* Full width */
   height: 100%;  /*Full height */
-  margin: auto;
+  background-color: rgba(0,0,0,0.4);
+  /* margin: auto; */
   overflow: auto; /* Enable scroll if needed */
   /*-webkit-animation-name: fadeIn; /* Fade in the background */
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
+  border: 2px solid red;
 }
 
 
 /* Modal Content */
 .modal-content {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: #fefefe;
   width: 70%;
-  height: 60%;
+  height: 75%;
 
   /*Add animation*/
   -webkit-animation-name: slideIn;
@@ -115,7 +118,7 @@ body {
 .modal-body {padding: 10px 5px;}
 
 .modal-body input[type='email'], input[type='text'] {
-  width: 80%;
+  width: 90%;
   outline: none;
   padding: 0.2rem;
   margin: 0.2rem;
@@ -128,6 +131,12 @@ body {
   outline: none;
   width: 100%;
   border-radius: 5px;
+ }
+ .modal-body button {
+   padding: 10px;
+   border-radius: 10px;
+   background-color: rgb(12, 24, 36);
+   color: white;
  }
 
 
@@ -150,4 +159,12 @@ body {
 @keyframes fadeIn {
   from {opacity: 0} 
   to {opacity: 1}
+}
+@media screen and (max-width: 450px) {
+  .modal-content {
+    width: 98%;
+    margin: auto;
+    border : 1px solid grey;
+    border-radius: 5px;
+  }
 }

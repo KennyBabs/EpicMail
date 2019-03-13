@@ -20,7 +20,7 @@ close.addEventListener('click', () => {
 
 open.addEventListener('click', () =>  {
   sidebar.style.width = "250px";
-  main.style.marginLeft = "250px";
+  main.style.marginLeft = "100px";
 });
 
 drop.addEventListener('click', () => {

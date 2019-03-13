@@ -46,7 +46,8 @@ body {
   color: white;
   font-weight: 500;
   font-size: 1.25rem;
-  text-align: center;
+  /* text-align: center; */
+  margin-left: 15px;
 }
 
 .deco {
@@ -55,8 +56,12 @@ body {
 }
 
 .inbox {
-  border-left: 5px solid #e74c3c;
+  border-left: 3px solid #e74c3c;
   margin-bottom: 5px;
+  
+}
+.inbox a {
+  font-size: 20px;
 }
 
 .inbox:hover {
@@ -64,19 +69,24 @@ body {
   opacity: 0.9;
 }
 .sent {
-  border-left: 5px solid #3498db;
+  border-left: 3px solid #3498db;
   margin-bottom: 5px;
+}
+.sent a {
+  font-size: 20px;
 }
 
 .sent:hover {
   background-color:#747d8c;;
   opacity: 0.9;
 }
-
 .drafts {
-  border-left: 5px solid rgb(247, 195, 51);
+  border-left: 3px solid rgb(247, 195, 51);
   margin-bottom: 5px;
 
+}
+.draft a {
+  font-size: 20px;
 }
 .drafts:hover {
   background-color: #747d8c;
@@ -84,7 +94,7 @@ body {
 }
 
 .top-bar {
-  margin: 2px 30px 1px;
+  margin: 2px 30px 1px 0;
 }
 
 .admin-content {
@@ -94,28 +104,34 @@ body {
 .admin {
   color: #747d8c;
   font-size: 1.3rem;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .img-avatar {
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 0.4rem;
+  margin-left: 15px;
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   margin: 0 5px;
 }
 
 .compose {
-  border-radius: 30px;
-  border: 2px solid #eb3b5a;  
+  border-radius: 35px;
+  border: 2px solid #eb3b5a;
+  margin-left: 8px;  
+}
+
+.compose a {
+  font-size: 30px;
 }
 
 .compose:hover {
-  border: 3px solid #eb3b5a;
+  box-shadow: 0 1rem 2rem rgba(19, 17, 17, 0.6);
 
 }
 
@@ -127,7 +143,7 @@ body {
   color: #34495e;
   padding: 10px 15px;
   border-radius: 13px;
-  width: 90vw;
+  width: 50%;
   text-align: left;
 
 }
