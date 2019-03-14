@@ -2,17 +2,17 @@ import epicMail from '../model/dummydb';
 
 class MessageController {
 	getAllMessages (req, res) {
-		return res.status(200).send({
-			status: 200,
+		    res.status(200).send({
+			status: 'successful',
 			data: epicMail['Message']
 		});
 
 		}
 		createMessages (req, res) {
 		
-			if(!req.body.subject || !req.body.message) {
+			if(!req.body.subject) {
 				return res.status(400).send({
-					status : 400,
+					status : 'error',
 					error : 'fields required'
 				});
 			}
@@ -28,7 +28,7 @@ class MessageController {
 
 		epicMail['Message'].push(message);	
 		 res.status(200).send({
-			status : 200,
+			status : 'successful',
 			data: message
 		});
 	}
@@ -38,12 +38,12 @@ class MessageController {
 		 const message = epicMail['Message'].find(message => message.id === id);
 			if (!message) {
 				return res.status(400).send({
-					status: 400,
+					status: 'error',
 					data: 'message not found'
 				});
 			}
 			return res.status(200).send({
-				status: 200,
+				status: 'successful',
 				data: message
 			});
 	}
@@ -61,7 +61,7 @@ class MessageController {
 
 		if (!messageFound) {
 			return res.status(400).send({
-				status: 400,
+				status: 'error',
 				data: 'message not found'
 			});
 
@@ -70,7 +70,7 @@ class MessageController {
 
 			let message = epicMail['Message'].splice(itemIndex, 1);
 			return res.status(200).send({
-				status: 200,
+				status: 'successful',
 				data: [{
 					"message" :message[0].message
 

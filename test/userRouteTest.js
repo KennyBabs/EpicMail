@@ -13,7 +13,7 @@ describe('EpicMail User login Endpoint', () => {
                 email : 'ayo@epicmail.com',
                 firstName : 'ayo',
                 lastName : 'babson',
-                password: 'andela',
+                password: 'andelarg',
                 userName : 'ayobabson'
             }
             chai.request(app)
@@ -67,7 +67,7 @@ describe('EpicMail User login Endpoint', () => {
             .post('/api/v1/auth/login')
             .send(new_user)
             .end((err, res) => {
-                expect(res).to.have.status(401);
+                expect(res).to.have.status(400);
                 done();
             });
     
