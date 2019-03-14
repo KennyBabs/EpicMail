@@ -25,7 +25,8 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "jsonwebtoken": "^8.5.0"
+    "jsonwebtoken": "^8.5.0",
+    "valid_me_js": "^1.0.7"
   },
   "devDependencies": {
     "chai": "^4.2.0",

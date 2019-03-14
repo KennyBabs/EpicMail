@@ -8,7 +8,7 @@ chai.should();
 describe('EpicMail endpoints', () => {
 	const message = {
 		id : 1,
-		createdOn : 2017,
+		createdOn : Date.now(),
 		subject : 'Andela',
 		message: 'This is Andela',
 		parentMessageId: 2,

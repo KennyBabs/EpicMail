@@ -4,8 +4,7 @@ import router from './routes/index';
 
 const app = express();
 
-app.use(router);
-
+app.use('/api/v1', router);
 
 
 
