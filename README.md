@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/KennyBabs/EpicMail.svg?branch=develop)](https://travis-ci.org/KennyBabs/EpicMail)
+[![Coverage Status](https://coveralls.io/repos/github/KennyBabs/EpicMail/badge.svg?branch=develop)](https://coveralls.io/github/KennyBabs/EpicMail?branch=develop)
 # EpicMail
 A web app that helps people exchange messages/information over the internet.
 
