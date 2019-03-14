@@ -9,15 +9,14 @@ body {
 
 .sidebar {
   height: 100%;
-  width: 0;
+  width:0;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #2C3A47;
+  background-color: rgba(0,0,0,0.4);
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
 }
 
 .sidebar a {
@@ -27,6 +26,16 @@ body {
   color: white;
   display: block;
   transition: 0.3s;
+}
+
+.sidebar-content {
+  padding-top: 40px;
+  width: 40%;
+  height :100%;
+  background-color:#2C3A47;
+  box-shadow: 0 1rem 2rem rgba(19, 17, 17, 0.6);
+  /* border: 2px solid red; */
+
 }
 
 .sidebar a:hover {
@@ -121,13 +130,17 @@ body {
 }
 
 .compose {
-  border-radius: 35px;
+  width: 50%;
+  padding: 0;
+  border-radius: 40px;
   border: 2px solid #eb3b5a;
-  margin-left: 8px;  
+  /* margin-left: 8px;   */
+  
 }
 
 .compose a {
   font-size: 30px;
+  margin: auto;
 }
 
 .compose:hover {
@@ -137,7 +150,8 @@ body {
 
 .openbtn {
   outline: none;
-  font-size: 1.15rem;
+  font-size: 1.45rem;
+  font-weight: bold;
   cursor: pointer;
   background-color: #f1f2f6;
   color: #34495e;
@@ -159,17 +173,62 @@ body {
 }
 
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav
+ (less padding and a smaller font size) */
+@media screen and (max-width: 450px) {
+  .sidebar a {
+    font-size: 18px;
+  }
+  .sidebar-content {
+    width : 60%;
+    padding-top: 15px; 
+  } 
+  .compose {
+    width: 75%;
+    padding: 0;
+    margin-left:15px;
+    text-align: left;
+  }
+  .compose a {
+    font-size: 1.20rem;
+    /* margin: auto; */
+    /* border: 2px solid red; */
+    /* border-radius: 30px; */
+  }
+  .admin {
+    font-size: 1.25rem;
+    padding :2px;
+  }
+  .admin-content a {
+    font-size: 1rem;  
+  }
+.modal-content {
+  width : 80%;
+}
+  .modal-body input[type='email'], input[type='text'] {
+    width: 90%;
+    outline: none;
+    margin: 0.15rem;
+    padding: 0;
+    height : 15%;
+  }
+  .modal-body {
+    padding: 0;
+  }
+  .modal-header {
+  font-size : 15px;
+  }
+  .label {
+    font-size : 15px;
+  }
 }
 
 .dropbtn {
   background-color: #ecf0f1;
   color: black;
   padding: 5px;
-  font-size: 12px;
+  font-size:18px;
+  font-weight: bold;
   border: none;
   cursor: pointer;
   width: 95vw;
@@ -218,3 +277,137 @@ body {
 .dropdown p:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.modal {
+  display: none; 
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100%; /* Full width */
+  height: 100%;  /*Full height */
+  background-color: rgba(0,0,0,0.4);
+  /* margin: auto; */
+  overflow: auto; /* Enable scroll if needed */
+  /*-webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+   /* border: 2px solid red; */
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #fefefe;
+  width: 80%;
+  height: 90%;
+
+  /*Add animation*/
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 1px 1px;
+  background-color: #2C3A47;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.form {
+  padding: 3px;
+}
+
+.modal-body {
+  padding: 10px 5px;
+}
+
+.modal-body input[type='email'], input[type='text'] {
+  width: 90%;
+  outline: none;
+  padding: .2rem;
+  margin: 0.2rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  clear: both;
+}
+::placeholder {
+  padding: 10px;
+}
+
+.modal-body select {
+	width:40%;
+	padding: 3px;
+	outline: none;
+	border-radius: 5px;
+	margin-bottom: 2px;
+  margin-left:2px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color:  #2C3A47;
+  color: white;
+	/*margin-right: 3px;*/
+}
+.modal-body select:focus{
+	outline: none;
+}
+ .modal-body textarea {
+  border: 1px solid grey;
+  outline: none;
+  margin-top: 5px;
+  width: 100%;
+  height: 90%;
+  border-radius: 5px;
+  resize: none;
+ }
+ .modal-body button {
+   padding: 15px;
+   border-radius: 10px;
+   background-color: rgb(12, 24, 36);
+   color: white;
+   float: right;
+ }
+ .modal-body button:focus {
+   outline: none;
+ }
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}

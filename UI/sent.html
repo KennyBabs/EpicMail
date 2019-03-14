@@ -9,10 +9,11 @@
 </head>
 <body>
  <div id="mySidebar" class="sidebar">
+   <div class="sidebar-content">
   <div class="top-bar">
  	<div class="logo"><h2>Ep<span class="deco">i</span>cMail</h2></div>
  	<div class="img-avatar"><img src="./img/avata.jpg" alt="User_Avatar" class="avatar"></div>
- 	<div class="compose"><a href="compose.html">Compose</a></div>
+ 	<div class="compose" id="myBtn"><a href="#">Compose</a></div>
   </div>
   <hr>
   <a href="#" class="closebtn" id="close">×</a>
@@ -26,7 +27,7 @@
     <span class='admin'>Admin</span>
     <a href="group.html">Create new group<span>  +</span></a>
   </div>
-
+  </div>
  </div>
 
  <div id="main">
@@ -50,6 +51,31 @@
     </p>
   </div>
 </div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+     <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h5>New message</h5>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <label><span class="label">To:</span></label><br><input type='email' required><br>
+        <label><span class="label">Cc/Bcc:</span></label><br><input type='email' required><br>
+        <label><span class="label">Subject</span></label><br><input type='text'><br>
+          <select>
+            <option value="select group">Select Group</option>
+            <option value="group1">GroupOne</option>
+            <option value="group2">GroupTwo</option>
+            <option value="group3">GroupThree</option>
+          </select><br>
+          <textarea name='message' placeholder="Message body....." rows='12' cols="25"></textarea></br>
+          <button>Save</button>
+          <button>Send</button>
+        </form>
+       </div>  
+   </div>
 <script src="./inbox.js" type="text/javascript"></script>
 </body>
 </html>

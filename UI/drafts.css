@@ -14,21 +14,34 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+.subject {
+  font-size: 17px;
+}
 
-.openbtn {
+h3 {
+font-size: 15px;
+color: red;
+font-weight: bold;
+}
+
+.header-btn {
   outline: none;
-  font-size: 1.15rem;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 1px #000000; 
   cursor: pointer;
   background-color: #f1f2f6;
   color: #34495e;
-  padding: 10px 15px;
+  margin-left: 15px;
+  padding: 20px 30px;
   border-radius: 13px;
-  width: 90vw;
+  width: 55%;
   text-align: left;
-
 }
 
-.openbtn:hover {
+.header-btn:focus {
+   outline: none;
+}
+.header-btn:hover {
   /*background-color: #444;*/
   outline: none;
 }
@@ -49,6 +62,7 @@ body {
   cursor: pointer;
   width: 95vw;
   margin: auto;
+  border-radius: 20px;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -71,7 +85,8 @@ body {
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
   animation-duration: 0.4s;
-  border: 2px solid red;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+   /* border: 2px solid red; */
 }
 
 
@@ -90,6 +105,7 @@ body {
   animation-duration: 0.4s
 }
 
+
 /* The Close Button */
 .close {
   color: white;
@@ -106,9 +122,11 @@ body {
 }
 
 .modal-header {
-  padding: 1px 2px;
+  padding: 1px 1px;
   background-color: #2C3A47;
   color: white;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .form {
@@ -120,23 +138,32 @@ body {
 .modal-body input[type='email'], input[type='text'] {
   width: 90%;
   outline: none;
-  padding: 0.2rem;
+  padding: .7rem;
   margin: 0.2rem;
   border: none;
   border-bottom: 1px solid grey;
   clear: both;
 }
+::placeholder {
+  padding: 10px;
+}
  .modal-body textarea {
   border: 1px solid grey;
   outline: none;
   width: 100%;
+  height: 90%;
   border-radius: 5px;
+  resize: none;
  }
  .modal-body button {
-   padding: 10px;
+   padding: 15px;
    border-radius: 10px;
    background-color: rgb(12, 24, 36);
    color: white;
+   float: right;
+ }
+ .modal-body button:focus {
+   outline: none;
  }
 
 
@@ -160,11 +187,24 @@ body {
   from {opacity: 0} 
   to {opacity: 1}
 }
+
 @media screen and (max-width: 450px) {
   .modal-content {
-    width: 98%;
+    width: 100%;
     margin: auto;
     border : 1px solid grey;
     border-radius: 5px;
   }
+  .modal-header {
+    font-size: 15px;
+    padding: 1px;
+    font-weight: bolder;
+  }
+  .modal-body input[type='email'], input[type='text'] {
+   padding: 0.2rem;
+  }
+  .modal-body textarea {
+    height: 80%;
+  }
+
 }
