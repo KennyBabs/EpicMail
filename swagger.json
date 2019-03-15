@@ -4,16 +4,16 @@
     "description": "A web app that helps people exchange messages/information over the internet.",
     "version": "1.0.0",
     "title": "Epic Mail Api",
-    "termsOfService": "https://github.com/EmmanuelSage/EpicMail/blob/develop/LICENSE",
+    "termsOfService": "",
     "contact": {
-      "email": "xyemmanuel@gmail.com"
+      "email": "babalolakehinde.p@gmail.com"
     },
     "license": {
       "name": "MIT",
-      "url": "https://github.com/EmmanuelSage/EpicMail/blob/develop/LICENSE"
+      "url": ""
     }
   },
-  "host": "http://localhost:5000/",
+  "host": "https://epicmail01.herokuapp.com/",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "name": "Messages",
-      "description": "Users can interact with messages, it requires x-access-token be sent in header"
+      "description": "Users can interact with messages"
     }
   ],
   "schemes": [
@@ -56,7 +56,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User sign up was succesfull",
+            "description": "User signup succesfull",
             "schema": {
               "type": "object",
               "properties": {
@@ -74,7 +74,7 @@
             "description": "invalid request values"
           },
           "409": {
-            "description": "Error is returned if user already exists i.e conflict"
+            "description": "Error is returned if user already exists"
           }
         }
       }

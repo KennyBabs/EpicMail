@@ -76,6 +76,18 @@ describe('EpicMail endpoints', () => {
 					});
 					});
 
+					describe('GET *', () => {
+						it('Should return url does not exist', (done) => {
+							chai.request(app)
+							.get('/api/v1/tgyg')
+							.end((err, res) => {
+								res.should.have.status(404);
+								res.body.should.be.a('object');
+								done();
+							});
+						});
+						});
+
 				describe('POST /api/v1/messages', () => {
 					it('Should post email messages', (done) => {
 						chai.request(app)
@@ -88,12 +100,32 @@ describe('EpicMail endpoints', () => {
 						});
 					});
 
-					it('Should not create email messages', (done) => {
+					it('Should not create email messages, if subject field is empty', (done) => {
 						const message1 = {
 							id : 1,
 		                    createdOn : new Date(),
 		                     subject : '',
 		                    message: 'This is Andela',
+		                    parentMessageId: 2,
+		                    status : 'sent',
+						};
+
+						chai.request(app)
+						.post('/api/v1/messages')
+						.send(message1)
+						.end((err, res) => {
+							res.should.have.status(400);
+							res.body.should.be.a('object');
+							done();
+						});
+					});
+
+					it('Should not create email messages, if message field is empty', (done) => {
+						const message1 = {
+							id : 1,
+		                    createdOn : new Date(),
+		                     subject : 'Andela',
+		                    message: '',
 		                    parentMessageId: 2,
 		                    status : 'sent',
 						};
@@ -139,7 +171,6 @@ describe('EpicMail endpoints', () => {
 				describe('GET /api/v1/messages:id', () => {
 					it('Should get a particular message', (done) =>{
 						const id = message['id']
-           
 						chai.request(app)
 						.delete(`/api/v1/messages/${id}`)
 						.end((err, res) => {

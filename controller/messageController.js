@@ -2,29 +2,29 @@ import epicMail from '../model/dummydb';
 
 class MessageController {
 	getAllMessages (req, res) {
-		    res.status(200).send({
-			 status: 'successful',
-			 data: epicMail['Message']
+		  res.status(200).send({
+		     status: 'success',
+		     data: epicMail['Message']
 		});
 	}
 	getAllDraftMessages (req, res) {
-		res.status(200).send({
-  	status: 'successful',
-  	data: epicMail['DraftMessage']
+		  res.status(200).send({
+  	          status: 'success',
+  	          data: epicMail['DraftMessage']
 });
 }
 
 
-		getAllUnreadMessages (req, res) {
-			res.status(200).send({
-	  	status: 'successful',
-		  data: epicMail['UnreadMessage']
+	getAllUnreadMessages (req, res) {
+		res.status(200).send({
+	  	    status: 'success',
+		    data: epicMail['UnreadMessage']
 	});
 }
 
 	getAllSentMessages (req, res) {
 		res.status(200).send({
-	status: 'successful',
+	status: 'success',
 	data: epicMail['SentMessage']
 
 });
@@ -35,21 +35,27 @@ class MessageController {
 			if(!req.body.subject) {
 				return res.status(400).send({
 					status : 'error',
-					error : 'fields required'
+					error : 'invalid credentials'
+				});
+			}
+			if(!req.body.message) {
+				return res.status(400).send({
+					status : 'error',
+					error : 'invalid credentials'
 				});
 			}
 		
 		const message = [{
-			id :req.body.id,
-			createdOn: new Date(),
-			subject: req.body.subject,
-		  message: req.body.message,
-		  parentMessageId: req.body.parentMessageId,
+		 id : epicMail['Message'].length + 1,
+		 createdOn: new Date(),
+		 subject: req.body.subject,
+		 message: req.body.message,
+		 parentMessageId: epicMail['Message'].length + 2
 		}];
 
 		epicMail['Message'].push(message);	
 		 res.status(200).send({
-			status : 'successful',
+			status : 'success',
 			data: message
 		});
 	}
@@ -91,7 +97,7 @@ class MessageController {
 
 			let message = epicMail['Message'].splice(itemIndex, 1);
 			return res.status(200).send({
-				status: 'successful',
+				status: 'success',
 				data: [{
 					"message" :message[0].message
 
