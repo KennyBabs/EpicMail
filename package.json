@@ -1,11 +1,15 @@
 {
   "name": "epicmail",
   "version": "1.0.0",
+  "engines": {
+    "node" : "10.15.1"
+  },
   "description": "A web app that helps people exchange messages/information over the internet.",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha --require babel-register test/*.js --exit",
-    "start": "nodemon app.js --exec babel-node --",
+    "start-dev": "nodemon app.js --exec babel-node --",
+    "start": "babel-node app.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
