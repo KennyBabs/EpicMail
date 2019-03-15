@@ -3,11 +3,33 @@ import epicMail from '../model/dummydb';
 class MessageController {
 	getAllMessages (req, res) {
 		    res.status(200).send({
-			status: 'successful',
-			data: epicMail['Message']
+			 status: 'successful',
+			 data: epicMail['Message']
 		});
+	}
+	getAllDraftMessages (req, res) {
+		res.status(200).send({
+  	status: 'successful',
+  	data: epicMail['DraftMessage']
+});
+}
 
-		}
+
+		getAllUnreadMessages (req, res) {
+			res.status(200).send({
+	  	status: 'successful',
+		  data: epicMail['UnreadMessage']
+	});
+}
+
+	getAllSentMessages (req, res) {
+		res.status(200).send({
+	status: 'successful',
+	data: epicMail['SentMessage']
+
+});
+	}
+
 		createMessages (req, res) {
 		
 			if(!req.body.subject) {
@@ -19,11 +41,10 @@ class MessageController {
 		
 		const message = [{
 			id :req.body.id,
-			createdOn: Date.now(),
+			createdOn: new Date(),
 			subject: req.body.subject,
 		  message: req.body.message,
 		  parentMessageId: req.body.parentMessageId,
-		  status: req.body.status,
 		}];
 
 		epicMail['Message'].push(message);	
