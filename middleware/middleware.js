@@ -12,7 +12,7 @@ const signUpValidator = (req, res, next) => {
       .isLength('userName', 3)
       .hasSpaces('userName')
       .hasSpaces('password')
-      .isLength('password', 8)
+      .isLength('password', 10)
       .check();
   };
 

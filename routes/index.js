@@ -14,8 +14,9 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 //=======Message Endpoints=========================
 router.get('/messages', messageController.getAllMessages);
-router.get('/messages/unread', messageController.getAllMessages);
-router.get('/messages/sent', messageController.getAllMessages);
+router.get('/messages/unread', messageController.getAllUnreadMessages);
+router.get('/messages/draft', messageController.getAllDraftMessages);
+router.get('/messages/sent', messageController.getAllSentMessages);
 router.get('/messages/:id', messageController.getMessage);
 router.post('/messages', messageController.createMessages);
 router.delete('/messages/:id', messageController.deleteMessage);

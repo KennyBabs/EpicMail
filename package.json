@@ -26,6 +26,7 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
+    "swagger-ui-express": "^4.0.2",
     "valid_me_js": "^1.0.7"
   },
   "devDependencies": {

@@ -13,7 +13,7 @@ describe('EpicMail User login Endpoint', () => {
                 email : 'ayo@epicmail.com',
                 firstName : 'ayo',
                 lastName : 'babson',
-                password: 'andelarg',
+                password: 'andelaisepic',
                 userName : 'ayobabson'
             }
             chai.request(app)
@@ -31,7 +31,7 @@ describe('EpicMail User login Endpoint', () => {
         it('it should allow user login', (done) => {
             const new_user = {
                 email : 'hayobabson@epicmail.com',
-                password: 'grammar',
+                password: 'grammarson',
             }
             chai.request(app)
             .post('/api/v1/auth/login')
@@ -42,6 +42,22 @@ describe('EpicMail User login Endpoint', () => {
             });
 
         });
+
+        describe('POST /api/vi/auth/login', () => {
+            it('should not be allow, for password that is not', (done) => {
+                const new_user = {
+                    email : 'hayobabson@epicmail.com',
+                    password: 'grammarson',
+                }
+                chai.request(app)
+                .post('/api/v1/auth/login')
+                .send(new_user)
+                .end((err, res) => {
+                    expect(res).to.have.status(200);
+                    done();
+                });
+    
+            });
 
         it('it should not allow user login, if email is not supply or incorrect', (done) => {
             const new_user = {
@@ -72,6 +88,21 @@ describe('EpicMail User login Endpoint', () => {
             });
     
         });
+        it('it should not allow user login, if password length is than 10 ', (done) => {
+            const new_user = {
+                email : 'hayobabson@epicmail.com',
+                password: 'dsafsfsqr',
+            }
+            chai.request(app)
+            .post('/api/v1/auth/login')
+            .send(new_user)
+            .end((err, res) => {
+                expect(res).to.have.status(400);
+                done();
+            });
+    
+        });
+    });
     });
 
 });
