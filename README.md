@@ -19,9 +19,10 @@ $ npm install
 ## Functionalities 
 * A user should be able to create a message
 * A user should be able to retract specific message
-* A user should be able to retract all message
-* A user should be able to retract all drafts message
-* A user should be able to delete all sent message
+* A user should be able to retract all messages
+* A user should be able to retract all draft messages
+* A user should be able to retract all sent messages
+* A user should be able to delete a specific message
 * A user should be able to signup
 * A user should be able to login
 
