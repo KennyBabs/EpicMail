@@ -8,7 +8,7 @@ A web app that helps people exchange messages/information over the internet.
 ### Clone The Project
 
 ```
-$ git clone https://github.com/kennyBabs/EpicMail-server.git
+$ git clone https://github.com/KennyBabs/EpicMail.git
 ```
 #### Install Required Dependencies
 
