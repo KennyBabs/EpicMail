@@ -42,24 +42,25 @@ describe('EpicMail User login Endpoint', () => {
             });
 
         });
+    });
 
         describe('POST /api/vi/auth/login', () => {
-            it('should not be allow, for password that is not', (done) => {
+            it('should not allow user login,if email is incorrect', (done) => {
                 const new_user = {
-                    email : 'hayobabson@epicmail.com',
+                    email : 'hayobabs@epicmail.com',
                     password: 'grammarson',
                 }
                 chai.request(app)
                 .post('/api/v1/auth/login')
                 .send(new_user)
                 .end((err, res) => {
-                    expect(res).to.have.status(200);
+                    expect(res).to.have.status(400);
                     done();
                 });
     
             });
 
-        it('it should not allow user login, if email is not supply or incorrect', (done) => {
+        it('it should not allow user login, if email is not supply', (done) => {
             const new_user = {
                 email : '',
                 password: 'grammar',
@@ -103,6 +104,6 @@ describe('EpicMail User login Endpoint', () => {
     
         });
     });
-    });
+
 
 });

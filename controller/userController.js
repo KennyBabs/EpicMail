@@ -5,6 +5,7 @@ class UserController {
     createUser (req, res) {
 		// const hashedPassword = bcrypt.hashSync(req.body.password, 8);
 		const user = { 
+            id : epicMail['User'].length + 1,
 			email: req.body.email,
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,

@@ -169,12 +169,23 @@ describe('EpicMail endpoints', () => {
 				});
 
 				describe('GET /api/v1/messages:id', () => {
-					it('Should get a particular message', (done) =>{
+					it('Should delete a particular message', (done) =>{
 						const id = message['id']
 						chai.request(app)
 						.delete(`/api/v1/messages/${id}`)
 						.end((err, res) => {
 							res.should.have.status(200);
+							res.body.should.be.a('object');
+							done();
+						});
+					});
+
+					it('Should not delete a particular message', (done) =>{
+						const id = 5
+						chai.request(app)
+						.delete(`/api/v1/messages/${id}`)
+						.end((err, res) => {
+							res.should.have.status(400);
 							res.body.should.be.a('object');
 							done();
 						});
