@@ -3,19 +3,48 @@
 # EpicMail
 A web app that helps people exchange messages/information over the internet.
 
-## Required Features
-* User can sign up.
-* User can sign in.
-* User can view their inbox and read messages.
-* User can compose message.
-* User can send a message to individuals.
-* User can view sent message.
-* User can retract sent messages.
-* User can save an email as draft.
-* User can send or delete draft message.
-* User can create groups.
-* User can add participants to group.
-* User can reset password.
+## GETTING STARTED 
+
+### Clone The Project
+
+```
+$ git clone https://github.com/KennyBabs/EpicMail.git
+```
+#### Install Required Dependencies
+
+```
+$ npm install
+```
+
+## Functionalities 
+* A user should be able to create a message
+* A user should be able to retract specific message
+* A user should be able to retract all messages
+* A user should be able to retract all draft messages
+* A user should be able to retract all sent messages
+* A user should be able to delete a specific message
+* A user should be able to signup
+* A user should be able to login
+
+## API ENDPOINT ROUTES
+
+| METHOD   | ROUTE                | DESCRIPTION                |
+|----------|----------------------|----------------------------|
+|  GET     | api/v1/messages      | Retrieve Received Emails   |
+|  GET     | api/v1/messages/<message_id>      | Retrieve A Specific Email  |
+|  DELETE  | api/v1/messages/<message_id>      | Delete A Specific Email    |
+|  GET     | api/v1/messages/sent | Retrieve Sent Emails       |
+|  GET     | api/v1/messages/draft | Retrieve Draft Emails       |
+|  POST    | api/v1/auth/signup   | User Registration          |
+|  POST    | api/v1/auth/login    | User Login                 |
+|  POST    | api/v1/messages      | Send Email                 |
+
+## Acknowledgements
+* Orji Ikechukwu
+* Adnan Rahic
+* Ayobami Adelakun
+* W3schools
+* Stackoverflow
 
 ## Language stack
 * HTML
@@ -24,3 +53,6 @@ A web app that helps people exchange messages/information over the internet.
 
 ## GitHub Pages Link:
 https://kennybabs.github.io/EpicMail/UI/index.html
+
+## Heroku Link:
+https://epicmail01.herokuapp.com/
