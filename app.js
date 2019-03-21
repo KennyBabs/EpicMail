@@ -3,7 +3,7 @@ import express from 'express';
 import router from './routes/index';
 import route from './src/routes/userRoutes';
 // import group from './src/routes/groupRoutes';
-// import message from './src/routes/messageRouter';
+import message from './src/routes/messageRouter';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json';
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api/v1', router);
 app.use('/api/v2', route);
-//app.use('/api/v2', message);
+app.use('/api/v2', message);
 //app.use('/api/v2', group);
 
 
