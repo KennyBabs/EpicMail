@@ -110,6 +110,34 @@ class GroupController {
     }
   }
 
+  static async addUserToGroup(req, res) {
+    let group = [];
+    const userGroup = [];
+    const checkGroup = 'SELECT * FROM groups WHERE id=$1 AND created_by=$2';
+    const { groupEmail } = req.body;
+    if (!req.body.userEmails) {
+      return res.status(400).send({ message: 'user emails are required' });
+    }
+    if (req.body.userEmails) {
+      const { rows } = await db.query(checkGroup, [req.params.id, req.user.id]);
+      group = rows[0];
+      if (!group) {
+        return res.status(400).send({ message: 'Access Denied' });
+      }
+    }
+    let result1 = [];
+    const { rows } = await db.query(checkGroup, [req.params.id, req.user.id]);
+    result1 = rows[0];
+    const aa = req.body.useremails;
+    const text = `INSERT INTO user_group (group_id, user_ids) VALUES (${group.id}, unnest(array[${aa}]))`;
+    try {
+      const { rows } = await db.query(text);
+      return res.status(201).send(rows[0]);
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  }
+
 }
 
 export default GroupController;
