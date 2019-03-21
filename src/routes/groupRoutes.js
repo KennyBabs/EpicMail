@@ -9,5 +9,6 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post('/groups', Auth.verifyToken, Group.createGroup);
+router.delete('/groups/:id', Auth.verifyToken, Group.deleteAGroup);
 
 export default router;
