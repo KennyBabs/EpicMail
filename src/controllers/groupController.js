@@ -69,6 +69,28 @@ class GroupController {
     }
   }
 
+  static async deleteUserInAGroup(req, res) {
+
+    let user = []; 
+    let deleteUserOutput = [];
+    const userQuery = `SELECT * FROM user_group u 
+                             INNER JOIN groups g ON u.group_id = g.id
+                             WHERE g.created_by=$1 AND u.group_id=$2 AND u.user_ids=$3`;
+    const deleteUser = 'DELETE FROM user_group WHERE group_id=$1 AND user_ids=$2';
+    const { rows } = await db.query(userQuery, [req.user.id, req.params.group, req.params.user]);
+    user = rows[0];
+    if (!user) {
+      res.status(404).send({ message: 'user does not exist' });
+    }
+    try {
+      const { rows } = await db.query(deleteUser, [user.group_id, user.user_ids]);
+      deleteUserOutput = rows[0];
+      return res.status(200).send({ message: 'user deleted successfully' });
+    } catch (e) {
+      return res.status(500).send(e);
+    }
+  }
+
 }
 
 export default GroupController;
