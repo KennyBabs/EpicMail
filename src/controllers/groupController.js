@@ -138,6 +138,50 @@ class GroupController {
     }
   }
 
+  static async sendMessageToGroup(req, res) {
+
+    let userData = [];
+    const findOneGroupEmail = `SELECT * FROM groups  
+                                  WHERE id=$1`;
+    if (!req.body.subject) {
+      return res.status(400).send({ message: 'A subject is required' });
+    }
+    if (!req.body.message) {
+      return res.status(400).send({ message: 'A message is required' });
+    }
+    if (req.body.subject || req.body.message) {
+      try {
+        const { rows } = await db.query(findOneGroupEmail, [req.params.id]);
+        userData = rows[0];
+        if (!userData) {
+          return res.status(404).send({ message: 'group not Found' });
+        }
+        const text = `
+            INSERT INTO messages(email,subject,message,status,senderId,recieverId,group_reciever,is_deleted,group_status)
+            VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+            returning *`;
+        const values = [
+          userData.group_email,
+          req.body.subject,
+          req.body.message,
+          'unread',
+          req.user.id,
+          null,
+          userData.id,
+          'false',
+          'true',
+        ];
+        const { rows: info } = await db.query(text, values);
+        return res.status(201).send({
+          status: 200,
+          data: info,
+        });
+      } catch (error) {
+        return res.status(500).send('request fail');
+      }
+    }
+  }
+
 }
 
 export default GroupController;
