@@ -67,8 +67,8 @@ export default class UserValidation {
     const message = req.body;
 
     const messageProperties = {
-      subject: 'required|alpha_num|min:2|max:100',
-      message: 'required|alpha_num|min:2|max:200',
+      subject: 'required|min:2|max:100',
+      message: 'required|min:2|max:200',
       email: 'required|email|max:100',
     };
 

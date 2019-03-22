@@ -2,16 +2,16 @@ import db from '../models/dbmodel';
 import Helper from '../utils/helper';
 
 class UserController {
-  static async createUser(req, res) {
-    let userData = [];
+  static async signUpUser(req, res) {
+    let userInfo = [];
   
-    const findOneEmail = 'SELECT * FROM users WHERE email=$1';
+    const selectOneMail = 'SELECT * FROM users WHERE email=$1';
     const { email } = req.body;
     if (email) {
-      const { rows } = await db.query(findOneEmail, [req.body.email]);
-      userData = rows[0];
+      const { rows } = await db.query(selectOneMail, [req.body.email]);
+      userInfo = rows[0];
 
-      if (userData) {
+      if (userInfo) {
         return res.status(400).send({ message: 'email already exists' });
       }
     }
@@ -36,7 +36,7 @@ class UserController {
         data:
            {
              message: `Welcome ${req.body.firstname}`,
-             token,
+             token
            },
       });
     } catch (error) {
@@ -45,24 +45,26 @@ class UserController {
   }
 
   static async loginUser(req, res) {
-    let userData = [];
-    const findOneEmail = 'SELECT * FROM users WHERE email=$1';
+    let userInfo = [];
+    const selectOneMail = 'SELECT * FROM users WHERE email=$1';
 
-    const { rows } = await db.query(findOneEmail, [req.body.email]);
-    userData = rows[0];
+    const { rows } = await db.query(selectOneMail, [req.body.email]);
+    userInfo = rows[0];
 
-    if (!userData) {
+    if (!userInfo) {
       return res.status(400).send({
-         message: 'email or password is incorrect' 
+        status : 'error',
+        error : 'Invalid Email' 
         });
     }
-    if (userData && !Helper.comparePassword(userData.password, req.body.password)) {
+    if (userInfo && !Helper.comparePassword(userInfo.password, req.body.password)) {
       return res.status(400).send({
-         message: 'Username or password is incorrect'
+         status : 'error',
+         error : 'Invalid Password'
          });
     }
-    // eslint-disable-next-line prefer-const
-    if (userData) {
+
+    if (userInfo) {
       const token = Helper.generateToken(rows[0].id);
       return res.status(200).send({
         status: 'success',
@@ -74,8 +76,8 @@ class UserController {
     }
 
     res.status(403).send({
-      success: 'error',
-      message: 'Incorrect username or password',
+      status : 'error',
+      error : 'Incorrect username or password',
     });
   }
 }

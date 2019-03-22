@@ -3,23 +3,29 @@ import db from '../models/dbmodel';
 class GroupController {
   static async createGroup(req, res) {
     let group = [];
-    const checkGroup = 'SELECT * FROM groups WHERE group_email=$1';
-    // const { groupEmail } = req.body;
-    if (!req.body.groupname || !req.body.groupemail) {
-      return res.status(400).send({ message: 'please enter groupname or groupemail' });
+    
+    const checkGroup = 'SELECT * FROM groups WHERE groupname=$1';
+    if (!req.body.groupname) {
+      return res.status(400).send({ 
+        status : 'error',
+        message: 'please enter a groupname'
+       });
     }
-    if (req.body.groupname || req.body.groupemail) {
-      const { rows } = await db.query(checkGroup, [req.body.groupemail]);
+    // =====check if groupname already exist===========
+    if (req.body.groupname) {
+      const { rows } = await db.query(checkGroup, [req.body.groupname]);
       group = rows[0];
       if (group) {
-        return res.status(400).send({ message: 'Group email already exists' });
+        return res.status(400).send({
+          status: 'error',
+          error: 'Group email already exists' 
+        });
       }
     }
-    const text = 'INSERT INTO groups(group_name,group_email,created_by)VALUES($1,$2,$3)';
+    const text = 'INSERT INTO groups(group_name, created_by)VALUES($1,$2)';
     const values = [
       req.body.groupname,
-      req.body.groupemail,
-      req.user.id,
+      req.user.id
     ];
     const { rows } = await db.query(text, values);
     return res.status(201).send({
@@ -30,7 +36,7 @@ class GroupController {
 
   static async deleteAGroup(req, res) {
 
-    let groupOutput = [];
+    let result = [];
     let deleteUserGroupOutput = [];
     let deleteGroupOutput = [];
     const fetchGroup = 'SELECT * FROM groups WHERE id=$1 AND created_by=$2';
@@ -39,19 +45,28 @@ class GroupController {
 
     try {
       const { rows } = await db.query(fetchGroup, [req.params.id, req.user.id]);
-      groupOutput = rows[0];
-      if (!groupOutput) {
-        return res.status(404).send({ message: 'Group not Found' });
+      result = rows[0];
+      if (!result) {
+        return res.status(404).send({ 
+          status: 'error',
+          error : 'Group not Found' 
+        });
       }
     } catch (e) {
-      return res.status(500).send({ message: 'request not granted' });
+      return res.status(500).send({
+        status : 'error',
+        error: 'Server error' 
+      });
     }
 
     try {
       const { rows } = await db.query(deleteUserGroup, [req.params.id]);
       deleteUserGroupOutput = { rows };
       if (!deleteUserGroupOutput) {
-        return res.status(404).send({ message: 'Access Denied' });
+        return res.status(404).send({ 
+          status: 'error',
+          error: 'Access Denied' 
+        });
       }
     } catch (e) {
       return res.status(400).send({ message: 'request not found' });
@@ -73,19 +88,24 @@ class GroupController {
 
     let user = []; 
     let deleteUserOutput = [];
-    const userQuery = `SELECT * FROM user_group u 
-                             INNER JOIN groups g ON u.group_id = g.id
-                             WHERE g.created_by=$1 AND u.group_id=$2 AND u.user_ids=$3`;
+    const userQuery = `SELECT * FROM user_group k 
+                             INNER JOIN groups p ON k.group_id = p.id
+                             WHERE p.created_by=$1 AND k.group_id=$2 AND k.user_ids=$3`;
     const deleteUser = 'DELETE FROM user_group WHERE group_id=$1 AND user_ids=$2';
     const { rows } = await db.query(userQuery, [req.user.id, req.params.group, req.params.user]);
     user = rows[0];
     if (!user) {
-      res.status(404).send({ message: 'user does not exist' });
+      res.status(404).send({ 
+        status : 'error',
+        error: 'User not found' });
     }
     try {
       const { rows } = await db.query(deleteUser, [user.group_id, user.user_ids]);
       deleteUserOutput = rows[0];
-      return res.status(200).send({ message: 'user deleted successfully' });
+      return res.status(200).send({ 
+        status :  'success',
+        message: 'User deleted successfully' 
+      });
     } catch (e) {
       return res.status(500).send(e);
     }
@@ -93,91 +113,151 @@ class GroupController {
 
   static async getAllGroups(req, res) {
     const group = 'SELECT * FROM groups where created_by=$1';
-    let output = [];
+    let result = [];
     try {
       const { rows } = await db.query(group, [req.user.id]);
-      output = rows;
-      if (!output) {
-        res.status(404).send({ message: 'groups not created' });
+      result = rows;
+      if (!result) {
+        res.status(404).send({
+          status: 'error',
+          message: 'groups not found' 
+        });
       }
       res.status(200).send({
         status: 200,
-        data: output,
+        data: result,
       });
     }
     catch (e) {
-      return res.status(400).send(e);
+      return res.status(500).send({
+        status : 'error',
+        error : 'Server error'
+      });
     }
   }
 
   static async addUserToGroup(req, res) {
     let group = [];
-    const userGroup = [];
     const checkGroup = 'SELECT * FROM groups WHERE id=$1 AND created_by=$2';
-    const { groupEmail } = req.body;
     if (!req.body.userEmails) {
-      return res.status(400).send({ message: 'user emails are required' });
+      return res.status(400).send({ 
+        status : 'error',
+        error: 'User emails are required' 
+      });
     }
     if (req.body.userEmails) {
       const { rows } = await db.query(checkGroup, [req.params.id, req.user.id]);
       group = rows[0];
       if (!group) {
-        return res.status(400).send({ message: 'Access Denied' });
+        return res.status(404).send({ 
+          status : 'error',
+          message: 'Group not found'
+         });
       }
     }
-    let result1 = [];
     const { rows } = await db.query(checkGroup, [req.params.id, req.user.id]);
-    result1 = rows[0];
-    const aa = req.body.useremails;
-    const text = `INSERT INTO user_group (group_id, user_ids) VALUES (${group.id}, unnest(array[${aa}]))`;
+    const kk = req.body.userEmails;
+    const text = `INSERT INTO user_group (group_id, user_ids) VALUES (${group.id}, unnest(array[${kk}]))`;
     try {
       const { rows } = await db.query(text);
-      return res.status(201).send(rows[0]);
+      return res.status(201).send(
+        rows[0]
+        );
     } catch (error) {
-      return res.status(500).send(error);
+      return res.status(500).send({
+        status: 'error',
+        error: 'Server error'
+      });
     }
   }
 
+  static async updateGroupName (req, res) {
+    let result;
+    const selectOneGroup = `SELECT * FROM groups WHERE id=$1`; 
+    const updateGroup = `UPDATE groups SET groupname=$1 WHERE id=$2` 
+    try {
+      const { rows } = await db.query(selectOneGroup, [req.params.id]);
+      result = rows[0];
+      if (!result) {
+        return res.status(404).send({ 
+          status: 'error',
+          error: 'Group not found' 
+        });
+      } 
+      if (result) {
+      const { rows } = await db.query(updateGroup, [req.body.groupname, req.params.id]);
+      return res.status(200).send({ 
+        status : 'success',
+        message: rows[0] 
+      });
+      }
+    } catch (e) {
+      return res.status(400).send({ 
+        status : 'error',
+        error:  'Email does not exist' 
+      });
+    }
+  }
+    
+
   static async sendMessageToGroup(req, res) {
 
-    let userData = [];
-    const findOneGroupEmail = `SELECT * FROM groups  
+    let groupInfo = [];
+    const selectOneGroup = `SELECT * FROM groups  
                                   WHERE id=$1`;
     if (!req.body.subject) {
-      return res.status(400).send({ message: 'A subject is required' });
+      return res.status(400).send({
+        status: 'error',
+        error: 'A subject is required'
+       });
+    }
+    if (!req.body.groupname) {
+      return res.status(400).send({
+        status: 'error',
+        error: 'Group name required'
+      })
     }
     if (!req.body.message) {
-      return res.status(400).send({ message: 'A message is required' });
+      return res.status(400).send({ 
+        status: 'error',
+        error: 'A message is required' 
+      });
     }
     if (req.body.subject || req.body.message) {
       try {
-        const { rows } = await db.query(findOneGroupEmail, [req.params.id]);
-        userData = rows[0];
-        if (!userData) {
-          return res.status(404).send({ message: 'group not Found' });
+        const { rows } = await db.query(selectOneGroup, [req.params.id]);
+        groupInfo = rows[0];
+        if (!groupInfo) {
+          return res.status(404).send({
+            status: 'error',
+            error: 'Group not Found' 
+          });
         }
         const text = `
-            INSERT INTO messages(email,subject,message,status,senderId,recieverId,group_reciever,is_deleted,group_status)
-            VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+            INSERT INTO messages(email,subject,message,status,senderId,recieverId,group_reciever,group_status)
+            VALUES($1,$2,$3,$4,$5,$6,$7,$8)
             returning *`;
         const values = [
-          userData.group_email,
+          req.body.groupname,
           req.body.subject,
           req.body.message,
           'unread',
           req.user.id,
           null,
-          userData.id,
-          'false',
+          groupInfo.id,
           'true',
         ];
         const { rows: info } = await db.query(text, values);
         return res.status(201).send({
-          status: 200,
+          status: success,
           data: info,
         });
       } catch (error) {
-        return res.status(500).send('request fail');
+        return res.status(500).send({
+          status: 'error',
+          error: 'Server'
+        
+        });
       }
     }
   }

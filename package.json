@@ -6,9 +6,6 @@
   },
   "description": "A web app that helps people exchange messages/information over the internet.",
   "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "test": "cross-env NODE_ENV=test nyc mocha --require babel-register test/*.js  --recursive --timeout 200000 --exit",
     "seed": "babel-node src/database/seed",

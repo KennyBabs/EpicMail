@@ -11,7 +11,7 @@ const { validSignUp, validLogin} = UserValidation;
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.post('/auth/signup', validSignUp, User.createUser);
+router.post('/auth/signup', validSignUp, User.signUpUser);
 router.post('/auth/login', validLogin,  User.loginUser);
 
 export default router;

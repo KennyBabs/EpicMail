@@ -137,16 +137,32 @@ describe('EpicMail User login Endpoint', () => {
               done();
             });
         });
-      
-        it('should sign up a user', (done) => {
+
+        it('should not allow invalid password', (done) => {
           chai.request(app)
             .post('/api/v2/auth/signup')
             .send({
-              email: 'rob@epicmail.com',
-              firstname: 'Robinson',
-              lastname: 'Tijani',
-              username : 'RobTj',
-              password: 'edward1234',
+              email: 'gbenga@epicmail.com',
+              firstname: 'tolani',
+              lastname: 'bankole',
+              username: 'bosslady',
+              password: 'pass  word',
+            })
+            .end((err, res) => {
+              expect(res).to.have.status(400);
+              done();
+            });
+        });
+
+        it('should not allow username with null value', (done) => {
+          chai.request(app)
+            .post('/api/v2/auth/signup')
+            .send({
+              email: 'alaba@epicmail.com',
+              firstname: 'hungerman',
+              lastname: 'banjo',
+              username: '',
+              password: 'hugoman',
             })
             .end((err, res) => {
               expect(res).to.have.status(400);
@@ -196,18 +212,5 @@ describe('EpicMail User login Endpoint', () => {
                 done();
               });
           });
-
-        it('should login a user', (done) => {
-          chai.request(app)
-            .post('/api/v2/auth/login')
-            .send({
-              email: 'Rob@epicmail.com',
-              password: 'edward1234',
-            })
-            .end((err, res) => {
-              expect(res).to.have.status(400);
-              done();
-            });
-        });
       });
 });
