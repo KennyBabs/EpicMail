@@ -14,6 +14,7 @@ router.delete('/groups/:group/user/:user', Auth.verifyToken, Group.deleteUserInA
 router.get('/groups', Auth.verifyToken, Group.getAllGroups);
 router.post('/groups/:id/users', Auth.verifyToken, Group.addUserToGroup);
 router.post('/groups/:id/messages', Auth.verifyToken, Group.sendMessageToGroup);
+router.patch('/groups/:id/name',Auth.verifyToken, Group.updateGroupName);
 
 
 export default router;

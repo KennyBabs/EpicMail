@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/messages', Auth.verifyToken, Message.getAllMessages);
 router.get('/messages/unread', Auth.verifyToken, Message.getUnreadMessages);
-router.get('/messages/sent', Auth.verifyToken, Message.getMessagesSent);
+router.get('/messages/sent', Auth.verifyToken, Message.getSentMessages);
 router.get('/messages/:id', Auth.verifyToken, Message.getAMessage);
 router.delete('/messages/:id/retract', Auth.verifyToken, Message.retractAMessage);
 router.delete('/messages/:id', Auth.verifyToken, Message.deleteAMessage);

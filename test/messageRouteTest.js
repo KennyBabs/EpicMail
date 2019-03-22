@@ -5,6 +5,8 @@ import app from '../app';
 chai.use(chaiHttp);
 chai.should();
 
+
+ let userToken;
 describe('EpicMail endpoints', () => {
 	const message = {
 		id : 1,
@@ -167,7 +169,7 @@ describe('EpicMail endpoints', () => {
 						});
 					});
 				});
-
+ 
 				describe('GET /api/v1/messages:id', () => {
 					it('Should delete a particular message', (done) =>{
 						const id = message['id']
@@ -191,6 +193,7 @@ describe('EpicMail endpoints', () => {
 						});
 					});
 				});
+
 
 					
 });
