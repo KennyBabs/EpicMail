@@ -194,7 +194,7 @@ class GroupController {
     } catch (e) {
       return res.status(400).send({ 
         status : 'error',
-        error:  'Email does not exist' 
+        error:  'Group does not exist' 
       });
     }
   }
